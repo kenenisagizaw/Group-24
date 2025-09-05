@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 55, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/hp/Desktop/PTP/src/app/api/detect/route.ts"],"sourcesContent":["import { NextRequest, NextResponse } from \"next/server\";\n\nexport async function POST(req: NextRequest) {\n  const { url, emailText } = await req.json();\n\n  let verdict = \"safe\";\n  let confidence = 70;\n  const signals: string[] = [];\n\n  if (url && url.includes(\"login\")) {\n    verdict = \"phishing\";\n    confidence = 85;\n    signals.push(\"Suspicious URL keyword: login\");\n  }\n\n  if (emailText && emailText.toLowerCase().includes(\"urgent\")) {\n    verdict = \"phishing\";\n    confidence = 90;\n    signals.push(\"Email contains urgent wording\");\n  }\n\n  return NextResponse.json({ verdict, confidence, signals });\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,eAAe,KAAK,GAAgB;IACzC,MAAM,EAAE,GAAG,EAAE,SAAS,EAAE,GAAG,MAAM,IAAI,IAAI;IAEzC,IAAI,UAAU;IACd,IAAI,aAAa;IACjB,MAAM,UAAoB,EAAE;IAE5B,IAAI,OAAO,IAAI,QAAQ,CAAC,UAAU;QAChC,UAAU;QACV,aAAa;QACb,QAAQ,IAAI,CAAC;IACf;IAEA,IAAI,aAAa,UAAU,WAAW,GAAG,QAAQ,CAAC,WAAW;QAC3D,UAAU;QACV,aAAa;QACb,QAAQ,IAAI,CAAC;IACf;IAEA,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAE;QAAS;QAAY;IAAQ;AAC1D","debugId":null}}]
+}
